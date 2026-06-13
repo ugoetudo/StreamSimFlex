@@ -149,8 +149,12 @@ def get_data(config):
         return get_series_from_db(db_conn, table_name=db_table, ids=ids, start_time=start_time)
     elif data_type == 'CSV':
         # Fetching data from CSV file
-        df = pd.read_csv(dataset_path)
-        df[f'{date_time_col}'] = pd.to_datetime(df[f'{date_time_col}'])
+        # Make adjustments to deal with the poorly parsed data
+        df = pd.read_csv(dataset_path, 
+                 on_bad_lines='skip', 
+                 names=['business_id', 'cool', 'date', 'funny', 'review_id', 'stars', 'text', 'useful', 'user_id'])
+        df[f'{date_time_col}'] = pd.to_datetime(df[f'{date_time_col}'], format='mixed', errors='coerce')
+        df = df.loc[~df[f'{date_time_col}'].isna(), :]
         # sort by timestamp
         df = df.sort_values(by=[f'{date_time_col}'])
 

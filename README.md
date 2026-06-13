@@ -1,5 +1,15 @@
 # StreamSim: Real-Time Data Streaming Simulator
 
+This fork of StreamSim has been substantially modified to mimic a stream of online reviews produced by yelp. It stands up a bare-bones WSGI server using Flask. Whenever that server is polled (i.e. a request is made to the relevant endpoint) it grabs a fresh batch of data and delivers it to the requestor.
+
+In turn, the requestor performs some light-weight processing on that data, and writes it to the file. The requestor can be seen as 'ingesting' the data. This requestor effectively streams the data by appending it to a file.
+
+Our task is to stand up this infrastructure and design a Kafka Connect connector that processes this stream in real time. Configuration is necessary to make this work properly. I will provide configuration files in real time as we progress through this exercise. 
+
+Following this, we will set up an automatic consumer for this data, in our penultimate session. We can use Apache Spark, Apache Flink, or even Kafka Streams to this end.
+
+In our final class we will link this stream to a real-time-updated dashboard using OpenSearch. 
+
 StreamSim is a real-time data streaming simulator tool that allows researchers and developers to simulate real-time streaming behavior for tabular data. It provides a convenient way to test real-time applications when the actual real-time data source is not yet available or when simulating different scenarios for testing purposes.
 
 ## Table of Contents
