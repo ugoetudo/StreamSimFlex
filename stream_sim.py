@@ -150,6 +150,7 @@ def get_data(config):
     elif data_type == 'CSV':
         # Fetching data from CSV file
         # Make adjustments to deal with the poorly parsed data
+        # My CSV file does not have headers so I add them when I read the data
         df = pd.read_csv(dataset_path, 
                  on_bad_lines='skip', 
                  names=['business_id', 'cool', 'date', 'funny', 'review_id', 'stars', 'text', 'useful', 'user_id'])
