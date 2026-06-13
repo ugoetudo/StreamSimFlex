@@ -26,6 +26,41 @@ Following this, we will set up an automatic consumer for this data, in our penul
 
 In our final class we will link this stream to a real-time-updated dashboard using OpenSearch. 
 
+## Setup
+
+I am using Python version 3.12. You are free to to use this version or higher, but don't harp on this point. 
+
+### Step 1
+Clone the repository using Git.
+```sh
+mkdir emtech-project
+cd emtech-project
+git clone https://github.com/ugoetudo/StreamSimFlex.git
+```
+You'll see that a new directory `StreamSimFlex` has been created. 
+
+### Step 2
+Create a python virtual environment. Please do not use Anaconda (conda), it is awful. Make sure you have the latest version of pip installed. 
+```sh
+python -m pip install --upgrade pip
+```
+Ensuring that you are in the directory `emtech-project`, create a Python virtual environment (commonly called a venv) and activate it (replace my-env-name with an environment name of your choosing, keeping in mind that it is a path):
+```sh
+python -m venv my-env-name
+# for windows:
+my-env-name\Scripts\activate
+# mac/wsl
+./my-env-name/Scripts/activate
+```
+Now, install the projects main dependencies:
+```sh
+pip install -r StreamSimFlex/requirements.txt
+```
+If you get an error "cannot import name 'url_quote' from 'werkzeug.urls'...:
+```sh
+pip install --upgrade Flask Werkzeug Flask-Login
+```
+
 ## StreamSim Documentation
 
 StreamSim is a real-time data streaming simulator tool that allows researchers and developers to simulate real-time streaming behavior for tabular data. It provides a convenient way to test real-time applications when the actual real-time data source is not yet available or when simulating different scenarios for testing purposes.
@@ -58,21 +93,11 @@ For detailed instructions on how to use the functions and modules provided by St
 Before using StreamSim, make sure you have the following prerequisites installed:
 
 - Python 3.x
-- Required dependencies (see Installation section)
+- Required dependencies (See [Setup](#setup) section above)
 
 ## Installation
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/NIH-W4H/StreamSim.git
-   ```
-
-2. Install the required dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
+See [Setup](#setup) section above
 
 ## Usage
 
@@ -82,19 +107,19 @@ Before using StreamSim, make sure you have the following prerequisites installed
 
 3. Start the Flask server to enable stream simulation:
 
-   ```bash
+   ```sh
    python stream_sim.py
    ```
 
 4. In a separate terminal, run the ingest_stream.py script to periodically fetch streams from the Flask server:
-    ```bash
+    ```sh
     python ingest_stream.py
     ```
 
 5. Observe the simulated stream data and verify that it meets your expectations.
 
 ## Contributing
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
+Contributions are NOT welcome! If you have any suggestions, bug reports, or feature requests, please keep them to yourself (I kid... open an issue, pull request, file a bug report).
 
 ## License
 This project is licensed under the [MIT License](https://github.com/NIH-W4H/StreamSim/blob/main/LICENSE). Feel free to use and modify this code for your own purposes.
