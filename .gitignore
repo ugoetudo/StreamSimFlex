@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 sample_producer.py
 stream_file.json 
+*.ipynb 
