@@ -19,7 +19,7 @@ DB_TABLE = '<database_table>'
 DATE_TIME_COL = 'date'
 BATCH = 1
 TIMEOUT = 1
-START_TIME = '2012-10-12 00:00:00'
+START_TIME = '2012-10-12 00:00:00' # if you aren't getting any data this may be the culprit
 
 # Ingestion Config
 OUT_DIR = "stream_sources"
