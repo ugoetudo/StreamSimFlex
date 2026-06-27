@@ -17,7 +17,6 @@ def get_data():
     data = response.json()
     df = pd.DataFrame(data)
     df[f'{DATE_TIME_COL}'] = pd.to_datetime(df[f'{DATE_TIME_COL}'])
-    # df.set_index(f'{DATE_TIME_COL}', inplace=True)
     return df
 
 
@@ -48,7 +47,11 @@ def process_stream(new_data: pd.DataFrame) -> None:
         with open(Path.as_posix(stream_file_path), 'w') as output_stream:
             
             for _, r in new_data.iterrows():
-                lines.append(json.dumps(r.to_dict())) 
+                payload_line = r.to_dict()
+                for k, v in payload_line.items():
+                    if v == "NaN":
+                        payload_line[k] = ""
+                lines.append(json.dumps(payload_line)) 
             output_stream.writelines(lines)
             output_stream.write('\n')
     print(lines)

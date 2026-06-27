@@ -1,0 +1,12 @@
+pipeline:
+  source:
+    kafka:
+      bootstrap_servers:
+        - 172.22.163.53:9092
+      topics:
+        - name: yelp-reveiw-events
+          group_id: gr1
+  sink:
+    - opensearch:
+        hosts: [ "http://opensearch-node1:9200" ]
+        index: yelp_reviews_3

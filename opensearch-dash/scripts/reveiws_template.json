@@ -1,0 +1,43 @@
+{
+  "index_patterns": [
+    "yelp*"
+  ],
+  "template": {
+    "settings": {
+      "index.number_of_shards": "1",
+      "index.number_of_replicas": "1"
+    },
+    "mappings": {
+      "properties": {
+        "date": {
+          "type": "date",
+          "format":"yyyy-MM-dd HH:mm:ss"
+        },
+        "text": {
+          "type": "text",
+          "analyzer": "standard"
+        },
+        "useful": {
+          "type": "float"
+        },
+        "funny": {
+          "type": "float"
+        },
+        "stars": {
+            "type": "float"
+        },
+        "cool": {
+          "type": "float"
+        }
+      }
+    },
+    "aliases": {
+      "yelp": {}
+    }
+  },
+  "composed_of": [],
+  "priority": "10",
+  "_meta": {
+    "flow": "simple"
+  }
+}
