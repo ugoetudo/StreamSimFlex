@@ -3,7 +3,7 @@ HOST = 'localhost'
 URL_PATH = 'fetchdata'
 PORT = '9977'
 DATA_TYPE = 'CSV' # 'DATABASE' or 'CSV'
-DATASET = r'\\wsl.localhost\Ubuntu\home\uetudo\reviews_csv_format\part-00000-5859fdf9-3d63-477c-a3c8-7721b4a4ef51-c000.csv' # Path of the CSV dataset. Leave empty if you want to stream from database table
+DATASET = r'\\wsl.localhost\Ubuntu\home\uetudo\reviews_csv_format\part-00000-5859fdf9-3d63-477c-a3c8-7721b4a4ef51-c000.csv' # The path of the CSV dataset. Leave empty if you want to stream from database table
 
 # Database Config
 DBMS = 'postgresql'
